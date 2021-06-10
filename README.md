@@ -1,6 +1,10 @@
 # Electrophysiology-Tutorial-for-Neuroscience_jp
 This repository contains a Japanese version of a published repository "Electrophysiology tutorial for neuroscience" by Shubo Chakrabarti https://github.com/mathworks/Electrophysiology-Tutorial-for-Neuroscience
 
+# Livescriptの内容はこちら
+Electrophysiology_Tutorial_for_Neuroscience_jp.mlxの内容をマークダウン形式に変換したものはこちらです。  
+https://github.com/mathworks/Electrophysiology-Tutorial-for-Neuroscience_jp/blob/main/Electrophysiology_Tutorial_for_Neuroscience_jp.md
+
 # 神経科学分野における電気生理学チュートリアル
 ELECTROPHYSIOLOGY TUTORIAL FOR NEUROSCIENCE
 
