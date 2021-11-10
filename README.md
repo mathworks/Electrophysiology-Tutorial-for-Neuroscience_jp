@@ -1,5 +1,4 @@
-[![View Live_Script_Spiking_Neurons_jp on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://jp.mathworks.com/matlabcentral/fileexchange/93370-live_script_spiking_neurons_jp)
-
+[![View Electrophysiology-Tutorial-for-Neuroscience_jp on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://jp.mathworks.com/matlabcentral/fileexchange/93365-electrophysiology-tutorial-for-neuroscience_jp)
 # Electrophysiology-Tutorial-for-Neuroscience_jp
 This repository contains a Japanese version of a published repository "Electrophysiology tutorial for neuroscience" by Shubo Chakrabarti https://github.com/mathworks/Electrophysiology-Tutorial-for-Neuroscience
 
