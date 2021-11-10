@@ -1,6 +1,6 @@
 [![View Electrophysiology-Tutorial-for-Neuroscience_jp on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://jp.mathworks.com/matlabcentral/fileexchange/93365-electrophysiology-tutorial-for-neuroscience_jp)
 # Electrophysiology-Tutorial-for-Neuroscience_jp
-This repository contains a Japanese version of a published repository "Electrophysiology tutorial for neuroscience" by Shubo Chakrabarti https://github.com/mathworks/Electrophysiology-Tutorial-for-Neuroscience
+This repository contains a Japanese version of a published repository "Electrophysiology tutorial for neuroscience" by Shubo Chakrabarti https://github.com/MathWorks-Teaching-Resources/Electrophysiology-Tutorial-for-Neuroscience
 
 # Livescriptの内容はこちら
 Electrophysiology_Tutorial_for_Neuroscience_jp.mlxの内容をマークダウン形式に変換したものはこちらです。  
@@ -29,4 +29,4 @@ ELECTROPHYSIOLOGY TUTORIAL FOR NEUROSCIENCE
 
 このチュートリアルは、Shubo Chakrabartiによって作成されたものであり、Megumi Fukuda(megumif@mathworks.com)が日本語に翻訳しました。基本的には逐語訳ですが、一部言葉を補ったり、原文の意を損なわない程度に意訳している部分もあります。参考情報、MATLABスクリプト内の変数名やコメントなどは、基本的には原文のまま残してあります。
 英語版のリポジトリはこちらです。
-https://github.com/mathworks/Electrophysiology-Tutorial-for-Neuroscience
+https://github.com/MathWorks-Teaching-Resources/Electrophysiology-Tutorial-for-Neuroscience

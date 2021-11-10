@@ -36,23 +36,23 @@ MATLAB tutorial for the analysis of neural signals
    -  低周波帯域のパワースペクトルの計算 
    -  低周波帯域のピリオドグラム（時間周波数プロット）の計算 
 
-使われている関数: [*timetable*](https://www.mathworks.com/help/matlab/ref/timetable.html?searchHighlight=timetable&s_tid=srchtitle)*, *[*butter*](https://www.mathworks.com/help/signal/ref/butter.html?searchHighlight=butter&s_tid=srchtitle)*, *[*filtfilt*](https://www.mathworks.com/help/signal/ref/filtfilt.html?searchHighlight=filtfilt&s_tid=srchtitle)*, *[*findpeaks*](https://www.mathworks.com/help/signal/ref/findpeaks.html?searchHighlight=findpeaks&s_tid=srchtitle)*, *[*pca*](https://www.mathworks.com/help/stats/pca.html?searchHighlight=pca&s_tid=srchtitle)*, *[*fitgmdist*](https://www.mathworks.com/help/stats/fitgmdist.html)*, *[*cluster*](https://www.mathworks.com/help/stats/gmdistribution.cluster.html?searchHighlight=cluster&s_tid=srchtitle)*, *[*histogram*](https://www.mathworks.com/help/matlab/ref/matlab.graphics.chart.primitive.histogram.html?searchHighlight=histogram&s_tid=srchtitle)*, *[*fft*](https://www.mathworks.com/help/matlab/ref/fft.html?searchHighlight=fft&s_tid=srchtitle)*, *[*pspectrum*](https://www.mathworks.com/help/signal/ref/pspectrum.html?searchHighlight=pspectrum&s_tid=srchtitle)*, *[*spectrogram*](https://www.mathworks.com/help/signal/ref/spectrogram.html?searchHighlight=spectrogram&s_tid=srchtitle)
+使われている関数: [*timetable*](https://www.mathworks.com/help/matlab/ref/timetable.html?searchHighlight=timetable&s_tid=srchtitle)*, *[*butter*](https://www.mathworks.com/help/signal/ref/butter.html?searchHighlight=butter&s_tid=srchtitle)*, *[*filtfilt*](https://www.mathworks.com/help/signal/ref/filtfilt.html?searchHighlight=filtfilt&s_tid=srchtitle)*, *[*findpeaks*](https://www.mathworks.com/help/signal/ref/findpeaks.html?searchHighlight=findpeaks&s_tid=srchtitle)*, *[*pca*](https://www.mathworks.com/help/stats/pca.html?searchHighlight=pca&s_tid=srchtitle)*, *[*fitgmdist*](https://www.mathworks.com/help/stats/fitgmdist.html)*, *[*cluster*](https://www.mathworks.com/help/stats/gmdistribution.cluster.html?searchHighlight=cluster&s_tid=srchtitle)*, *[*histogram*](https://www.mathworks.com/help/matlab/ref/matlab.graphics.chart.primitive.histogram.html?searchHighlight=histogram&s_tid=srchtitle)*, *[*retime*](https://www.mathworks.com/help/matlab/ref/timetable.retime.html)*, *[*fft*](https://www.mathworks.com/help/matlab/ref/fft.html?searchHighlight=fft&s_tid=srchtitle)*, *[*pspectrum*](https://www.mathworks.com/help/signal/ref/pspectrum.html?searchHighlight=pspectrum&s_tid=srchtitle)*, *[*spectrogram*](https://www.mathworks.com/help/signal/ref/spectrogram.html?searchHighlight=spectrogram&s_tid=srchtitle)
 
 # 2. 背景と重要なポイント
 
-樹状突起、細胞体、軸索からなるニューロンによって神経系は構成されています。細胞外液よりも負になる**静止膜電位**(*resting membrane potential*)をニューロンは持っています。周囲のニューロンからの興奮性の刺激は、樹状突起において、瞬間的な正方向への電位の揺らぎ（**脱分極**、*depolarizations****)****を生み出します。脱分極した電位の合計が閾値を超えると、神経細胞膜にある特定のイオンチャネルが開いて正の電荷を持つイオンが細胞膜内に流入して負の膜電位が逆転し、正の****活動電位****(action potential)が発生します。活動電位は*スパイク*(spikes)とも呼ばれます。有名な*Izhikevichモデル\hyperref{09248FF0}{[1]}によるニューロンのスパイク発生機構シミュレーションのMATLABチュートリアルは [こちら](https://jp.mathworks.com/matlabcentral/fileexchange/86198-live_script_spiking_neurons?s_tid=srchtitle)です。
+樹状突起、細胞体、軸索からなるニューロンによって神経系は構成されています。細胞外液よりも負になる**静止膜電位**(*resting membrane potential*)をニューロンは持っています。周囲のニューロンからの興奮性の刺激は、樹状突起において、瞬間的な正方向への電位の揺らぎ（**脱分極**、*depolarizations****)****を生み出します。脱分極した電位の合計が閾値を超えると、神経細胞膜にある特定のイオンチャネルが開いて正の電荷を持つイオンが細胞膜内に流入して負の膜電位が逆転し、正の****活動電位****(action potential)が発生します。活動電位は*スパイク*(spikes)とも呼ばれます。有名な*Izhikevichモデル\hyperref[09248FF0]{[1]}によるニューロンのスパイク発生機構シミュレーションのMATLABチュートリアルは[こちら](https://jp.mathworks.com/matlabcentral/fileexchange/86198-live_script_spiking_neurons?s_tid=srchtitle)です。
 
 神経科学者が通常記録する神経活動には様々な種類があります。侵襲性と信号の特異性の順に並べていくと、脳波(EEG), 脳皮質電位(ECoG)、局所フィールド電位(LFP)、細胞外記録、細胞内記録があります。最も信号の特異性が高いのは細胞内記録であり、単一の細胞からの信号を記録するものです。しかし、特異性が増すに従って、実験者が信号を取る神経組織がだんだんと空間的に小さくなっていきます。これら*すべての信号は神経活動信号であり、このチュートリアルで示されるステップを使って解析できます。*
 
 ![image_0.png](Electrophysiology_Tutorial_for_Neuroscience_jp_images/image_0.png)
 
-*細胞体で活動電位を引き起こす軸索における脱分極を示した図。Image courtesy: *\hyperref{B6C478DC}{[2]  }
+*細胞体で活動電位を引き起こす軸索における脱分極を示した図。Image courtesy: *\hyperref[B6C478DC]{[2]  }
 
   
 
 ![image_1.png](Electrophysiology_Tutorial_for_Neuroscience_jp_images/image_1.png)
 
-*神経科学者によってよく扱われる電気生理学の信号の図。 Image courtesy: *\hyperref{DE3C9ACE}{[3]}. *Includes content originally from Buzsaki lab [4], [5]. *
+*神経科学者によってよく扱われる電気生理学の信号の図。 Image courtesy: *\hyperref[DE3C9ACE]{[3]}. *Includes content originally from Buzsaki lab [4], [5]. *
 
   
 ## 2.1 神経科学者による電気生理学データ解析の標準的な手順
@@ -66,14 +66,18 @@ MATLAB tutorial for the analysis of neural signals
   
 # 2.2 ナイキストの法則とサンプリング周波数
 
-サンプリング周波数（アナログ信号をデジタル化する周波数）は、解析したい信号に現れる最大周波数の少なくとも2倍よりも大きい値でなければなりません。もしデータが250Hzまでの周波数を含む場合、サンプリング周波数は500Hz (1秒あたり500点でデジタル化されている）よりも大きく取る必要があります。これはナイキストの法則(Nyquist Law)と呼ばれます。活動電位(スパイク、spike)は合計1ms以内の高い周波数で起こる現象であるため、神経活動は10kHzよりも高いサンプル周波数で記録されます。電気生理用のA/Dボードはサンプリング周波数を調整可能です。
+サンプリング周波数（アナログ信号をデジタル化する周波数）は、解析したい信号に現れる最大周波数の少なくとも2倍よりも大きい値でなければなりません。もしデータが250Hzまでの周波数を含む場合、サンプリング周波数は500Hz (1秒あたり500点でデジタル化されている）よりも大きく取る必要があります。これはナイキストの法則(Nyquist Law)と呼ばれます。
 
-以上のことをMATLABで経験してみるために、2Hzと10Hzの周波数の2つのサイン波を作成してみます。この2つの信号を、どちらも5Hzのサンプル周波数で記録します。サイン波は以下のように書けます
+実際の計測においては、ナイキスト周波数よりもはるかに高いサンプリング周波数を用いることが望ましいです。活動電位(スパイク、spike)は合計1ms以内の高い周波数で起こる現象であるため、少なくとも10kHzよりも高いサンプル周波数で神経活動は記録されます。電気生理用のA/Dボードはサンプリング周波数を調整可能です。
+
+以上のことをMATLABで経験してみるために、2Hzと10Hzの周波数の2つのサイン波を作成してみます。サイン波は以下のように書けます
 
 <img src="https://latex.codecogs.com/gif.latex?y=\sin&space;\left(2*\textrm{pi}*f*x\right)"/>
 
+まずはじめに、この2つの信号をどちらも5Hzのサンプル周波数で記録してみます。信号の持つ真の周波数はナイキスト周波数よりも高い部分に以上に現れること、サンプリング周波数を上げることで真の周波数の様子が正しく観察できることに注目してください。
+
 ```matlab:Code
-fsExample = 20; % sampling frequency
+fsExample = 10; % sampling frequency
 x = 0:1/fsExample:1-1/fsExample; % time axis (sampling)
 sine1 = sin(2*pi*2*x); % sine wave of 2 Hz
 sine2 = sin(2*pi*10*x); % sine wave of 10 Hz
@@ -106,6 +110,8 @@ xlabel('time');
 legend('2Hz','10Hz')
 ```
 
+![figure_0.png](Electrophysiology_Tutorial_for_Neuroscience_jp_images/figure_0.png)
+
 # 3. データの前処理と解析の手順
 ## 3.1 データの読み込み
 
@@ -113,7 +119,7 @@ legend('2Hz','10Hz')
 
 神経科学者向けに、[BIDS](https://github.com/bids-standard/bids-matlab), [NeurodatawithoutBorders](https://github.com/NeurodataWithoutBorders/matnwb), [NIfTI](https://www.mathworks.com/help/images/ref/niftiread.html), [EDF](https://www.mathworks.com/help/signal/ref/edfread.html)などの特殊フォーマットのいくつかはMATLABでサポートされています。[多くのベンダー](https://jp.mathworks.com/products/connections/search-products.html?q=&fq=marketing-industry:neuroscience&page=1)がMATLABでデータにアクセスするための関数を提供しています。
 
-この演習課題では、ガラス絶縁タングステン電極を用いてげっ歯類体性感覚野\hyperref{DC88C291}{[6]} から記録されたデータセットを用います。データセットは*neural_data.matに保存され、data* (ベクトル) and *fs* (スカラー)という２つの変数を持ちます。fsは40kHzのサンプリング周波数を示します。データは各点でアナログ-ディジタル変換器によってディジタル化された電位信号を含んでいます。fsはサンプリング周波数です。これは、１秒当たり何回電極からのアナログ信号がディジタル化されたかを示します。
+この演習課題では、ガラス絶縁タングステン電極を用いてげっ歯類体性感覚野\hyperref[DC88C291]{[6]} から記録されたデータセットを用います。データセットは*neural_data.matに保存され、data* (ベクトル) and *fs* (スカラー)という２つの変数を持ちます。fsは40kHzのサンプリング周波数を示します。データは各点でアナログ-ディジタル変換器によってディジタル化された電位信号を含んでいます。fsはサンプリング周波数です。これは、１秒当たり何回電極からのアナログ信号がディジタル化されたかを示します。
 
 MATLABにデータを読み込みます
 
@@ -367,12 +373,24 @@ LFPについては、時間を基準としたイベントではなく、特定�
 
 ### 3.6.1 データの前処理
 
-LFPの解析を行う前に、前処理を行う必要があります。LFPの解析を行うためには、信号を200Hzにおいてローパス処理する必要があります。200Hzが信号に現れる最も高い周波数であり、ナイキストの法則に従って400Hzより高いサンプリングを行えば良いということになります。実際には、1000Hzというより高いサンプリング周波数を用います。まずは40,000Hzで記録されたもとのデータをダウンサンプリングするところから始めましょう。タイムテーブル型に使える[リサンプリングや集約のための関数](https://jp.mathworks.com/help/matlab/matlab_prog/resample-and-aggregate-data-in-timetable.html)があります。
+LFPの解析を行う前に、前処理を行う必要があります。LFPの解析を行うためには、信号を200Hzにおいてローパス処理する必要があります。200Hzが信号に現れる最も高い周波数であり、ナイキストの法則に従って400Hzより高いサンプリングを行えば良いということになります。実際には、1000Hzというより高いサンプリング周波数を用います。まずは40,000Hzで記録されたもとのデータをダウンサンプリングするところから始めましょう。
+
+  
+
+信号をダウンサンプリングする処理は、2つの要素から成り立っています。
+
+   -  処理したい信号をローパスフィルタにかけて高周波成分を低減し、新しいサンプリング周波数においてもナイキストの法則に違反しないようにする 
+   -  信号をk倍で間引きまたはリサンプリング、k番目ごとにデータ点をとって新しい信号とする 
+
+The` `[`decimate`](https://www.mathworks.com/help/signal/ref/decimate.html) function takes care of both of these steps. However, in this case since the LFP's were \hyperref[H_56FC6D79]{already low-pass filtered at 200Hz}, a simple resampling will suffice.
+
+この2つのステップについて、[`decimate`](https://www.mathworks.com/help/signal/ref/decimate.html) を使って処理できます。しかし今回の場合では、LFPはすでに200Hzでローパスフィルター処理をされているので、リサンプリングすれば十分です。
+
+タイムテーブル型に使える[リサンプリングや集約のための関数](https://jp.mathworks.com/help/matlab/matlab_prog/resample-and-aggregate-data-in-timetable.html)があります。
 
 ```matlab:Code
 resampleFs = 1000;
-neural_lowPass = retime(neural,'regular','nearest',"SampleRate",resampleFs); % resample original times
-neural_lowPass = removevars(neural_lowPass,{'spikes','raw'});
+neural_lowPass = retime(neural(:,'LFP'),'regular','nearest',"SampleRate",resampleFs); % resample original times
 ```
 
 ### 3.6.2 LFPのパワースペクトルの計算
@@ -386,7 +404,7 @@ frange = linspace(0,1,L/2)*resampleFs/2; % compute frequency range upto Nyquist 
 fAmp = Y(1:floor(L/2)); % only use half the spectrum
 figure; hold on
 plot(frange,fAmp,'k') 
-ylabel('amplitude')
+ylabel('amplitude (Volts)')
 xlabel('frequency(Hz)')
 xlim([1 100]); % since this signal was low pass filtered at 200Hz
 ```
@@ -397,7 +415,7 @@ xlim([1 100]); % since this signal was low pass filtered at 200Hz
 [pxx,f]=pspectrum(neural_lowPass.LFP,resampleFs,'Leakage',1);
 figure;
 plot(f,pxx);
-ylabel('Power')
+ylabel('Power(Volts^2)')
 xlabel('frequency(Hz)')
 xlim([1 100]); % since this signal was low pass filtered at 200Hz
 ```
